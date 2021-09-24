@@ -14,6 +14,8 @@ class LinkController extends Controller
             abort(404);
         }
 
+        $shortLink->logs()->create();
+
         return redirect()->away($shortLink->destination_link);
     }
 }

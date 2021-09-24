@@ -22,6 +22,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/i/{shortLink}', [LinkController::class, 'redirectToDestination']);
+Route::domain('i.' . env('ROOT_DOMAIN'))->group(function () {
+    Route::get('/{shortLink}', [LinkController::class, 'redirectToDestination']);
+});
 
 require __DIR__.'/auth.php';
