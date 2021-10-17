@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LinkController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,6 @@ Route::domain('i.' . env('ROOT_DOMAIN'))->group(function () {
     Route::get('/{shortLink}', [LinkController::class, 'redirectToDestination']);
 });
 
-// require __DIR__.'/auth.php';
+Route::get('/', function () {
+    return redirect('https://michaelbarrows.com');
+});
